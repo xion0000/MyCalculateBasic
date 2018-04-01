@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 //        Add Fragment to activity
         if(savedInstanceState == null) {
            getSupportFragmentManager().beginTransaction()
-                .add(R.id.contentMainFragment, new MainFragment()).commit();
+                .add(R.id.contentMainFragment, new SplashScreen()).commit();
         }
 
 
