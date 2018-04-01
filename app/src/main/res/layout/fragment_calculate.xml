@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <!--Tool bar-->
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbarCalculate"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
 
     <!--Content-->
     <LinearLayout
-        android:background="#03ec0a0a"
-        android:padding="15dp"
-        android:layout_margin="40dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:background="#03ec0a0a"
+        android:orientation="vertical"
+        android:padding="15dp">
 
-       <!--Money-->
+        <!--Money-->
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <!--Icon-->
             <ImageView
-                android:src="@drawable/ic_action_money"
                 android:layout_width="wrap_content"
-                android:layout_height="?attr/actionBarSize" />
+                android:layout_height="?attr/actionBarSize"
+                android:src="@drawable/ic_action_money" />
 
 
             <!--Text field-->
             <EditText
                 android:id="@+id/edtMoney"
-                android:inputType="numberDecimal"
-                android:hint="USD :"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                android:hint="USD :"
+                android:inputType="numberDecimal" />
 
 
         </LinearLayout>
@@ -50,14 +50,22 @@
         <!--Exchange bottom-->
         <Button
             android:id="@+id/btnExchange"
-            android:text="Exchange"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Exchange" />
 
 
-        </LinearLayout>
+    </LinearLayout>
 
 
+    <!--List data-->
+    <ListView
+        android:padding="15dp"
+        android:id="@+id/listviewExchange"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:background="#c8ffffff"></ListView>
 
 
 </LinearLayout>

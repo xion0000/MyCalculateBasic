@@ -11,13 +11,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class CalculateFragment extends Fragment{
 
     //    Explicit
     private String factorString;
+    private ArrayList<String> stringArrayList;
 
     public static CalculateFragment calculateInstance(String factorString) { //space for send value to new fragment
         CalculateFragment calculateFragment = new CalculateFragment();
@@ -31,6 +39,9 @@ public class CalculateFragment extends Fragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+//        Setup arrayList
+        stringArrayList = new ArrayList<>();
 
 
 //        Get value from argument
@@ -87,13 +98,48 @@ public class CalculateFragment extends Fragment{
                     String thbString = Double.toString(thbAdouble);
                     myAlertdialog("your " + usdString + " usd", thbString + " THB.");
 
+//                    Create list view
+                    Calendar calendar = Calendar.getInstance(); //use calendar of JAVA
+                    DateFormat dateFormat = new SimpleDateFormat("dd-MMMM-yyyy HH:mm:ss");
+                    String dateString = dateFormat.format(calendar.getTime());
+                    Log.d("1APrilV2", "Date ==>" + dateString);
 
+                    String listString = dateString +
+                            "\n" +  // \n is enter to new line
+                            usdString +
+                            " X " +
+                            factorString +
+                            " = " +
+                            thbString;
+
+                    stringArrayList.add(listString);
+                    Log.d("1APrilV2", "Current ArrayList ==>" + stringArrayList.toString());
+
+                    createListView();
 
                 }
 
 
             }
         });
+    }
+
+    private void createListView() {
+
+        ListView listView = getView().findViewById(R.id.listviewExchange);
+        String resultString = stringArrayList.toString();
+        resultString = resultString.substring(1, resultString.length() - 1);
+        String[] strings = resultString.split(",");
+
+        for (int  i=0; i<strings.length; i+=1) {
+            Log.d("1APrilV2", "strings[" + i + "] ==> " + strings[i]);
+        }
+
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, strings);
+        listView.setAdapter(stringArrayAdapter);
+
+
     }
 
     private void createToolbar() {
