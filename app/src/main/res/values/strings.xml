@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Calculate Basic</string>
+
+    <string name="title_th">อัคราแลกเปลี่ยน</string>
 </resources>

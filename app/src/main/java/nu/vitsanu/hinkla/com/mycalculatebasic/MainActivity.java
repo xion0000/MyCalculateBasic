@@ -20,4 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }   //Main method
+
+    @Override
+    public void onBackPressed() { // deactivate hardware back bottom
+        //super.onBackPressed();
+    }
 }   //Main class
